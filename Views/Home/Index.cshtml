@@ -1,0 +1,17 @@
+﻿@for (var i=1; i<4; i++){
+    <div style="display:inline-block; vertical-align: top; padding: 2px; margin: 5px; border: 1px solid black;">
+        <a href="@ViewBag.products[i].url" target="_blank"><img src="@ViewBag.products[i].url" alt="@ViewBag.products[i].name" height="70" width="90"></a>
+        <p>@ViewBag.products[i].name</p>
+        <p>(@ViewBag.products[i].quantity left)</p>
+    </div>
+}
+<br>
+<a href="/products">show more...</a>
+
+<h5 style="text-decoration:underline">Recent Orders</h5>
+
+@for (var i=0; i<3; i++){
+    <p>@ViewBag.orders[i].customer.name purchased @ViewBag.orders[i].quantity @ViewBag.orders[i].product.name</p>
+}
+<a href="/orders">show all orders...</a>
+

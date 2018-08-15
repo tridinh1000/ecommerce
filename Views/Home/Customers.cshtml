@@ -1,0 +1,26 @@
+@model Customer
+
+<h3>Add a new customer</h3>
+@ViewBag.customerError
+<form asp-action="CreateCustomer" method="POST">
+    <p><span asp-validation-for="name"></span></p>
+    <label asp-for="name"></label>
+    <input asp-for="name">
+    <button type="submit">Submit</button>
+</form><br>
+
+<table class="table table-striped table-hover">
+    <tr>
+        <td>Customer Name</td>
+        <td>Created Date</td>
+        <td>Actions</td>
+    </tr>
+
+    @foreach(var customer in @ViewBag.customers){
+    <tr>
+        <td>@customer.name</td>
+        <td>@customer.created_at.ToString("D")</td>
+        <td><a href="/customer/delete/@customer.customerid"><button>Remove</button></a></td>
+    </tr>
+    }
+</table>
